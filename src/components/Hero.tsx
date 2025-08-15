@@ -62,10 +62,10 @@ export const Hero: React.FC<HeroProps> = ({
             </p>
           </div>
           <div className="w-full lg:w-1/2 flex justify-center animate-fade-in-right">
-            <div className="relative hover-lift">
+            <div className="relative ">
               <div className="absolute -inset-2 bg-[#1B365D]/10 rounded-xl blur-xl animate-pulse-subtle"></div>
               <div className="relative bg-white rounded-xl shadow-lg overflow-hidden p-6 hover-glow">
-                <img src="https://images.unsplash.com/photo-1579621970588-a35d0e7ab9b6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80" alt="Debt relief consultation" className="w-full h-auto rounded-lg transition-transform duration-300 hover:scale-105" />
+                <img src="https://images.unsplash.com/photo-1579621970588-a35d0e7ab9b6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80" alt="Debt relief consultation" className="w-full h-auto rounded-lg " />
                 <div className="mt-4 flex items-center justify-between stagger-children">
                   <div className="text-center">
                     <div className="text-xl font-bold text-[#1B365D] animate-float">
