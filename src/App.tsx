@@ -12,6 +12,7 @@ import { Footer } from './components/Footer';
 import { ConsultationModal } from './components/ConsultationModal';
 import { SuccessModal } from './components/SuccessModal';
 import { ErrorModal } from './components/ErrorModal';
+import { ContactPage } from './components/ContactPage';
 
 export function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -47,6 +48,7 @@ export function App() {
         <Services openModal={openModal} />
         <CTASection openModal={openModal} />
         <FAQ />
+        <ContactPage />
       </main>
       <Footer openModal={openModal} />
       <ConsultationModal 
