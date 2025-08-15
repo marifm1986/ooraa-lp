@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 export const FAQ = () => {
+  const { ref, isVisible } = useScrollAnimation();
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   const toggleAccordion = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -27,7 +29,7 @@ export const FAQ = () => {
     question: 'What are the terms and conditions?',
     answer: 'Our program is designed for unsecured debts like credit cards, personal loans, and medical bills. Success rates and timelines vary based on individual circumstances. While we strive for maximum savings, results cannot be guaranteed and depend on creditor cooperation. Our representatives can explain all terms during your free consultation.'
   }];
-  return <section id="faq" className="w-full bg-white py-16">
+  return <section ref={ref} id="faq" className={`w-full bg-white py-16 transition-all duration-1000 ${isVisible ? 'animate-fade-in-up' : 'opacity-0 translate-y-10'}`}>
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-[#1B365D] mb-4">
@@ -37,8 +39,8 @@ export const FAQ = () => {
             Get answers to common questions about our debt relief program.
           </p>
         </div>
-        <div className="max-w-3xl mx-auto">
-          {faqs.map((faq, index) => <div key={index} className="border-b border-gray-200 last:border-b-0">
+        <div className={`max-w-3xl mx-auto ${isVisible ? 'stagger-children' : ''}`}>
+          {faqs.map((faq, index) => <div key={index} className="border-b border-gray-200 last:border-b-0 hover-lift">
               <button onClick={() => toggleAccordion(index)} className="flex justify-between items-center w-full py-4 px-2 text-left font-medium text-[#1B365D] hover:text-[#2E8B8B] transition-colors">
                 <span>{faq.question}</span>
                 {openIndex === index ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}

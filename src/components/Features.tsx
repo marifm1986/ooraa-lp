@@ -41,7 +41,7 @@ export const Features: React.FC<FeaturesProps> = ({ openModal }) => {
     <section className="w-full bg-gradient-to-br from-[#F8F9FA] via-white to-[#F5E6D3] py-20">
       <div className="container mx-auto px-4 max-w-7xl">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 animate-fade-in-up">
           <h2 className="text-4xl md:text-5xl font-bold text-[#1B365D] mb-6">
             Why Thousands Trust Ooraa
           </h2>
@@ -52,11 +52,11 @@ export const Features: React.FC<FeaturesProps> = ({ openModal }) => {
         </div>
 
         {/* Features Grid - Mobile Stacked */}
-        <div className="lg:hidden space-y-8">
+        <div className="lg:hidden space-y-8 stagger-children">
           {features.map((feature, index) => (
             <div 
               key={index}
-              className="group relative overflow-hidden rounded-2xl shadow-xl bg-white transform transition-all duration-500 hover:scale-105"
+              className="group relative overflow-hidden rounded-2xl shadow-xl bg-white transform transition-all duration-500 hover:scale-105 hover-lift"
             >
               {/* Background Image */}
               <div className="relative h-64 overflow-hidden">
@@ -92,11 +92,11 @@ export const Features: React.FC<FeaturesProps> = ({ openModal }) => {
         {/* Features Grid - Desktop */}
         <div className="hidden lg:block">
           {/* First Row - 2 Cards */}
-          <div className="grid grid-cols-2 gap-8 mb-8">
+          <div className="grid grid-cols-2 gap-8 mb-8 stagger-children">
             {features.slice(0, 2).map((feature, index) => (
               <div 
                 key={index}
-                className="group relative overflow-hidden rounded-2xl shadow-xl bg-white transform transition-all duration-500 hover:scale-105 hover:shadow-2xl"
+                className="group relative overflow-hidden rounded-2xl shadow-xl bg-white transform transition-all duration-500 hover:scale-105 hover:shadow-2xl hover-lift hover-glow"
               >
                 <div className="grid grid-cols-2 h-80">
                   {/* Image Side */}
@@ -132,11 +132,11 @@ export const Features: React.FC<FeaturesProps> = ({ openModal }) => {
           </div>
 
           {/* Second Row - 2 Cards (Reversed Layout) */}
-          <div className="grid grid-cols-2 gap-8">
+          <div className="grid grid-cols-2 gap-8 stagger-children">
             {features.slice(2, 4).map((feature, index) => (
               <div 
                 key={index + 2}
-                className="group relative overflow-hidden rounded-2xl shadow-xl bg-white transform transition-all duration-500 hover:scale-105 hover:shadow-2xl"
+                className="group relative overflow-hidden rounded-2xl shadow-xl bg-white transform transition-all duration-500 hover:scale-105 hover:shadow-2xl hover-lift hover-glow"
               >
                 <div className="grid grid-cols-2 h-80">
                   {/* Content Side */}

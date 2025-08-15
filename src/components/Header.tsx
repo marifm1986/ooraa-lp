@@ -15,36 +15,36 @@ export const Header: React.FC<HeaderProps> = ({
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-  return <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/80 backdrop-blur-md shadow-md py-2' : 'bg-transparent py-3 sm:py-4'}`}>
+  return <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 animate-slide-in ${isScrolled ? 'bg-white/80 backdrop-blur-md shadow-md py-2' : 'bg-transparent py-3 sm:py-4'}`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        <div className="flex items-center">
+        <div className="flex items-center animate-fade-in-left">
           <a href="/" className="flex items-center">
             <img 
               src="/ooraa-logo.png" 
               alt="Ooraa Debt Relief" 
-              className="h-8 w-auto sm:h-10 md:h-12 transition-all duration-300"
+              className="h-8 w-auto sm:h-10 md:h-12 transition-all duration-300 hover:scale-110"
             />
           </a>
         </div>
-        <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8">
-          <a href="#how-it-works" className="text-[#333333] hover:text-[#2E8B8B] transition-colors text-sm xl:text-base">
+        <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8 animate-fade-in-up" style={{animationDelay: '0.2s'}}>
+          <a href="#how-it-works" className="text-[#333333] hover:text-[#2E8B8B] transition-all duration-300 text-sm xl:text-base transform hover:scale-105">
             How It Works
           </a>
-          <a href="#success-stories" className="text-[#333333] hover:text-[#2E8B8B] transition-colors text-sm xl:text-base">
+          <a href="#success-stories" className="text-[#333333] hover:text-[#2E8B8B] transition-all duration-300 text-sm xl:text-base transform hover:scale-105">
             Success Stories
           </a>
-          <a href="#about" className="text-[#333333] hover:text-[#2E8B8B] transition-colors text-sm xl:text-base">
+          <a href="#about" className="text-[#333333] hover:text-[#2E8B8B] transition-all duration-300 text-sm xl:text-base transform hover:scale-105">
             About
           </a>
-          <a href="#faq" className="text-[#333333] hover:text-[#2E8B8B] transition-colors text-sm xl:text-base">
+          <a href="#faq" className="text-[#333333] hover:text-[#2E8B8B] transition-all duration-300 text-sm xl:text-base transform hover:scale-105">
             FAQ
           </a>
-          <a href="#contact" className="text-[#333333] hover:text-[#2E8B8B] transition-colors text-sm xl:text-base">
+          <a href="#contact" className="text-[#333333] hover:text-[#2E8B8B] transition-all duration-300 text-sm xl:text-base transform hover:scale-105">
             Contact
           </a>
         </nav>
-        <div className="hidden lg:flex items-center space-x-3 xl:space-x-4">
-          <a href="tel:8888889914" className="flex items-center text-[#1B365D] font-medium group text-sm xl:text-base">
+        <div className="hidden lg:flex items-center space-x-3 xl:space-x-4 animate-fade-in-right" style={{animationDelay: '0.4s'}}>
+          <a href="tel:8888889914" className="flex items-center text-[#1B365D] font-medium group text-sm xl:text-base transition-all duration-300 hover:scale-105">
             <Phone className="w-4 h-4 mr-2 animate-pulse" />
             <span className="hidden xl:inline">(888) 888-9914</span>
             <span className="xl:hidden">Call</span>

@@ -1,11 +1,14 @@
 import React from 'react';
 import { Phone, ClipboardCheck, Handshake, PartyPopper, ArrowRight } from 'lucide-react';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 interface HowItWorksProps {
   openModal: () => void;
 }
 
 export const HowItWorks: React.FC<HowItWorksProps> = ({ openModal }) => {
+  const { ref, isVisible } = useScrollAnimation();
+  
   const steps = [
     {
       id: 1,
@@ -34,7 +37,7 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({ openModal }) => {
   ];
 
   return (
-    <section id="how-it-works" className="w-full bg-white py-20">
+    <section ref={ref} id="how-it-works" className={`w-full bg-white py-20 transition-all duration-1000 ${isVisible ? 'animate-fade-in-up' : 'opacity-0 translate-y-10'}`}>
       <div className="container mx-auto px-4 max-w-6xl">
         {/* Header */}
         <div className="text-center mb-16">
@@ -50,9 +53,9 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({ openModal }) => {
         {/* Steps */}
         <div className="space-y-12 lg:space-y-0">
           {/* Mobile - Vertical Layout */}
-          <div className="lg:hidden space-y-8">
+          <div className={`lg:hidden space-y-8 ${isVisible ? 'stagger-children' : ''}`}>
             {steps.map((step, index) => (
-              <div key={step.id} className="text-center">
+              <div key={step.id} className="text-center hover-lift">
                 <div className="flex flex-col items-center">
                   {/* Step Number */}
                   <div className="w-12 h-12 bg-[#1B365D] text-white rounded-full flex items-center justify-center font-bold text-lg mb-4">
@@ -87,9 +90,9 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({ openModal }) => {
               {/* Connecting Line */}
               <div className="absolute top-6 left-0 right-0 h-px bg-gray-200"></div>
               
-              <div className="grid grid-cols-4 gap-8">
+              <div className={`grid grid-cols-4 gap-8 ${isVisible ? 'stagger-children' : ''}`}>
                 {steps.map((step, index) => (
-                  <div key={step.id} className="relative text-center">
+                  <div key={step.id} className="relative text-center hover-lift">
                     {/* Step Number */}
                     <div className="w-12 h-12 bg-[#1B365D] text-white rounded-full flex items-center justify-center font-bold text-lg mb-6 mx-auto relative z-10">
                       {step.id}

@@ -1,14 +1,17 @@
 import React from 'react';
 import { Phone, ArrowRight } from 'lucide-react';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 interface CTASectionProps {
   openModal: () => void;
 }
 export const CTASection: React.FC<CTASectionProps> = ({
   openModal
 }) => {
-  return <section className="w-full bg-gradient-to-r from-[#1B365D] to-[#2E8B8B] py-16 text-white">
+  const { ref, isVisible } = useScrollAnimation();
+  
+  return <section ref={ref} className={`w-full bg-gradient-to-r from-[#1B365D] to-[#2E8B8B] py-16 text-white transition-all duration-1000 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
       <div className="container mx-auto px-4">
-        <div className="max-w-3xl mx-auto text-center">
+        <div className={`max-w-3xl mx-auto text-center transition-all duration-800 delay-300 ${isVisible ? 'animate-fade-in-up' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-3xl font-bold mb-4">
             Ready to Live Free from Debt Drama?
           </h2>
@@ -26,7 +29,7 @@ export const CTASection: React.FC<CTASectionProps> = ({
               (888) 888-9914
             </a>
           </div>
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className={`flex flex-wrap justify-center gap-4 ${isVisible ? 'stagger-children' : ''}`}>
             <div className="flex items-center gap-2">
               <CheckCircleIcon className="w-5 h-5 text-[#F4B942]" />
               <span>No upfront fees</span>

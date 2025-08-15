@@ -1,6 +1,9 @@
 import React from 'react';
 import { Star } from 'lucide-react';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 export const SuccessStories = () => {
+  const { ref, isVisible } = useScrollAnimation();
+  
   const testimonials = [{
     id: 1,
     name: 'Sarah M.',
@@ -50,7 +53,7 @@ export const SuccessStories = () => {
     stars: 5,
     savedAmount: '$25,120'
   }];
-  return <section id="success-stories" className="w-full bg-[#F8F9FA] py-16">
+  return <section ref={ref} id="success-stories" className={`w-full bg-[#F8F9FA] py-16 transition-all duration-1000 ${isVisible ? 'animate-fade-in-up' : 'opacity-0 translate-y-10'}`}>
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-[#1B365D] mb-4">
@@ -61,8 +64,8 @@ export const SuccessStories = () => {
             our debt relief program.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {testimonials.map(testimonial => <div key={testimonial.id} className="bg-white border border-gray-100 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+        <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ${isVisible ? 'stagger-children' : ''}`}>
+          {testimonials.map(testimonial => <div key={testimonial.id} className="bg-white border border-gray-100 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow hover-lift">
               <div className="p-6">
                 <div className="flex items-start gap-4 mb-4">
                   <img src={testimonial.image} alt={testimonial.name} className="w-12 h-12 rounded-full object-cover" />

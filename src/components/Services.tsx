@@ -83,7 +83,7 @@ export const Services: React.FC<ServicesProps> = ({ openModal }) => {
     <section id="services" className="w-full bg-gradient-to-br from-[#F8F9FA] to-white py-20">
       <div className="container mx-auto px-4 max-w-7xl">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 animate-fade-in-up">
           <h2 className="text-3xl md:text-2xl font-bold text-[#1B365D] mb-6">
             Comprehensive Debt Relief Solutions
           </h2>
@@ -95,11 +95,11 @@ export const Services: React.FC<ServicesProps> = ({ openModal }) => {
 
         {/* Mobile Carousel View */}
         <div className="lg:hidden">
-          <div className="space-y-6">
+          <div className="space-y-6 stagger-children">
             {services.map((service, index) => (
               <div 
                 key={service.id}
-                className="bg-white rounded-2xl shadow-lg overflow-hidden transform transition-all duration-300 hover:shadow-xl"
+                className="bg-white rounded-2xl shadow-lg overflow-hidden transform transition-all duration-300 hover:shadow-xl hover-lift hover-tilt"
               >
                 <div className="relative h-48 overflow-hidden">
                   <img 
@@ -108,7 +108,7 @@ export const Services: React.FC<ServicesProps> = ({ openModal }) => {
                     className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                   />
                   <div className={`absolute inset-0 bg-gradient-to-r ${service.color} opacity-80`}></div>
-                  <div className="absolute top-4 left-4 bg-white rounded-full p-3 shadow-lg">
+                  <div className="absolute top-4 left-4 bg-white rounded-full p-3 shadow-lg hover-bounce">
                     <div className="text-[#1B365D]">
                       {service.icon}
                     </div>
@@ -139,12 +139,12 @@ export const Services: React.FC<ServicesProps> = ({ openModal }) => {
 
         {/* Desktop Grid View */}
         <div className="hidden lg:block">
-          <div className="grid grid-cols-2 gap-8 mb-12">
+          <div className="grid grid-cols-2 gap-8 mb-12 stagger-children">
             {services.map((service, index) => (
               <div 
                 key={service.id}
                 onClick={() => setSelectedService(index)}
-                className={`relative group cursor-pointer transition-all duration-300 ${
+                className={`relative group cursor-pointer transition-all duration-300 hover-lift hover-glow ${
                   selectedService === index 
                     ? 'transform scale-105 z-10' 
                     : 'hover:transform hover:scale-102'

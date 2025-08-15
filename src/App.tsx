@@ -10,10 +10,32 @@ import { FAQ } from './components/FAQ';
 import { CTASection } from './components/CTASection';
 import { Footer } from './components/Footer';
 import { ConsultationModal } from './components/ConsultationModal';
+import { SuccessModal } from './components/SuccessModal';
+import { ErrorModal } from './components/ErrorModal';
+
 export function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
+  const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
+
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
+  
+  const showSuccessModal = () => {
+    setIsModalOpen(false);
+    setIsSuccessModalOpen(true);
+  };
+  
+  const showErrorModal = () => {
+    setIsModalOpen(false);
+    setIsErrorModalOpen(true);
+  };
+  
+  const closeSuccessModal = () => setIsSuccessModalOpen(false);
+  const closeErrorModal = () => {
+    setIsErrorModalOpen(false);
+    setIsModalOpen(true); // Reopen the form modal to try again
+  };
   return <div className="flex flex-col min-h-screen w-full bg-white">
       <Header openModal={openModal} />
       <main className="flex-1">
@@ -26,7 +48,20 @@ export function App() {
         <CTASection openModal={openModal} />
         <FAQ />
       </main>
-      <Footer />
-      <ConsultationModal isOpen={isModalOpen} onClose={closeModal} />
+      <Footer openModal={openModal} />
+      <ConsultationModal 
+        isOpen={isModalOpen} 
+        onClose={closeModal}
+        onSuccess={showSuccessModal}
+        onError={showErrorModal}
+      />
+      <SuccessModal 
+        isOpen={isSuccessModalOpen} 
+        onClose={closeSuccessModal} 
+      />
+      <ErrorModal 
+        isOpen={isErrorModalOpen} 
+        onClose={closeErrorModal} 
+      />
     </div>;
 }

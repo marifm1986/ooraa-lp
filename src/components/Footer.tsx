@@ -1,6 +1,11 @@
 import React from 'react';
-import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone } from 'lucide-react';
-export const Footer = () => {
+import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, ArrowRight } from 'lucide-react';
+
+interface FooterProps {
+  openModal: () => void;
+}
+
+export const Footer: React.FC<FooterProps> = ({ openModal }) => {
   return <footer className="w-full bg-gray-50 text-gray-800">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -113,6 +118,17 @@ export const Footer = () => {
                 </div>
               </li>
             </ul>
+            
+            {/* Simple CTA Button */}
+            <div className="mt-6 animate-fade-in-up" style={{animationDelay: '0.6s'}}>
+              <button 
+                onClick={openModal}
+                className="bg-[#1B365D] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#2a4a75] transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center gap-2 hover-glow"
+              >
+                Get Free Consultation
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
           </div>
         </div>
         <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-gray-200 text-center text-gray-500 text-xs sm:text-sm">
